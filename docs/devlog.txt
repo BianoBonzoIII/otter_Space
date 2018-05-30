@@ -1,7 +1,10 @@
-
-otter_Space's devlog
-
-Onwards!
+otter_Space
+Brian Lin
+Aleksandra Koroza
+Isaac Jon
+pd 2
+------------------------
+Space Architect Program 
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 29-05-2018
@@ -9,4 +12,13 @@ Aleksandra: updated proposal
 Brian: discussed proposal phases
 Isaac: discussed proposal phases
 Summary: Many details ironed out, some more planning required.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+30-05-2018
+Aleksandra: updated proposal
+Brian: updated devlog, read more processing methods we can
+use in project
+Isaac: create background image for 1st screen. Update driver
+Summary: Started coding and laid out more details for our plan
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
