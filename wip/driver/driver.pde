@@ -5,11 +5,14 @@ final static int ANIMATION = 2;
 final static int SOLAR = 3;
 final static int END = 4;
 
+PImage img;
+
 void setup() {
-  size(600, 600);
+  size(800, 800);
+  img = loadImage("largeGalField.jpg");
   
 }
 
 void draw() {
-  
+  image(img, 0,0);
 }
