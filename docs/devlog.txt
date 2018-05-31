@@ -6,19 +6,61 @@ pd 2
 ------------------------
 Space Architect Program 
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-29-05-2018
-Aleksandra: updated proposal
-Brian: discussed proposal phases
-Isaac: discussed proposal phases
-Summary: Many details ironed out, some more planning required.
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/////////// Zone of Reflection \\\\\\\\\\\
+------------------------------------------
+***OBSTACLES OVERCOME
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<Wow, we so BOSS bc...>
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-30-05-2018
-Aleksandra: updated proposal
-Brian: updated devlog, read more processing methods we can
+***UNRESOLVED ISSUES
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<
+blah blah pesky bug...
+maybe some of these will move into the Obs.Ovrcm section...
+>
+
+***COOL STUFF LEARNED
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<wow! oo! etc!...>
+
+***MID-DEVELOPMENT DESIGN CHANGES
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+We changed ___ to ___ bc...
+<etc>
+<etc>
+
+***LESSONS LEARNED
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<tales of wisdom gained...>
+
+||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
+
+ ______   ______   __   __   __       ______   _______     
+/_____/\ /_____/\ /_/\ /_/\ /_/\     /_____/\ /______/\    
+\:::_ \ \\::::_\/_\:\ \\ \ \\:\ \    \:::_ \ \\::::__\/__  
+ \:\ \ \ \\:\/___/\\:\ \\ \ \\:\ \    \:\ \ \ \\:\ /____/\ 
+  \:\ \ \ \\::___\/_\:\_/.:\ \\:\ \____\:\ \ \ \\:\\_  _\/ 
+   \:\/.:| |\:\____/\\ ..::/ / \:\/___/\\:\_\ \ \\:\_\ \ \ 
+    \____/_/ \_____\/ \___/_(   \_____\/ \_____\/ \_____\/ 
+==============================================================
+||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
+2018-05-29
+--------------------------------------------------------------
+Aleksandra :: updated proposal
+Brian :: discussed proposal phases
+Isaac :: discussed proposal phases
+Summary :: Many details ironed out, some more planning required.
+==============================================================
+
+2018-05-30
+--------------------------------------------------------------
+Aleksandra :: updated proposal, lay out steps 
+Brian :: updated devlog, read more processing methods we can
 use in project
-Isaac: create background image for 1st screen. Update driver
-Summary: Started coding and laid out more details for our plan
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Isaac :: create background image for 1st screen. Update driver
+Summary :: Started coding and laid out more details for our plan
+==============================================================
