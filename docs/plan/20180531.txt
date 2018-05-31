@@ -1,0 +1,59 @@
+otter_Space
+Brian Lin
+Aleksandra Koroza
+Isaac Jon
+pd 2
+------------------------
+Space Architect Program
+Plan for 5/31/2018
+
+Note: 
+*  --> Time 
++++ --> Core Functionality 
+-  --> Delegated Work 
+###  --> Collaborative Work 
+()  --> Might not include 
+
+1) To begin tackling this project, we must first build out a skeleton in Processing (based on UML diagrams)
++++ Skeleton files for... 
+Driver*
+Gas
+Star (dwarf, main sequence, giants; based on user input size)
+Planet
+Moon
+()Comets**
+()Asteroids**
+
+* must include/ elaborate upon the states introduced in the proposal
+**both Comets and Asteroids are travellers in the system and have the possibility of colliding with other celestial objects; may prompt the creation of a Traveller super class.
+
+(## this is collaborative work since some attributes/ class relationships may be contested. ie. Mechanics of nebula animation still unclear)
+
+2) After skeletons are put in place, we can proceed to the first phase of the project (Intro).
+This includes an Intro screen with star nursery logo --> Processing and use Outer Space image as the background. Will require a review of how to incorporate user input and a manipulation of driver file.
+- delegated work (any member) as it should be fairly simple
+* 1 day
+
+3) After setting up an Intro screen and transitioning into the next screen upon user input
+ie (Part 2: Nebula)
+### Implement Gas class and Processing to mimic a nebula in outer space ###+++   
+### Use key() and user input so that the bottom section of the screen would be used to get user input on the size and composition of desired star. The attributes are size and composition percentages (hydrogen and helium content)
+### discuss whether a star can come out to be in later stages of its development based on composition input 
+- delegate convincing gas formation to one person
+- other two look at screen splitting, user input, and planning star formation
+* Approximately 3-4 days
+
+4)Condensation 
++++### Once the user is done inputting their parameters for their desired star, implement Nebula such that all of the gas condenses at the point where the user clicked the mouse. The star formed will have a different size and color and shape depending on the user's data. ###+++
+User can no longer change their star once they click on the gas
+- delegated to two people as the other reviews code done thus far
+* Approximately 2 days
+
+
+Note: The first stage of the project which includes convincing nebula graphics, user input, and star condensation should not take more than 3-4 days. If issues remain after this time period, move on to the Solar System construct as it is the core of the project. Priority during few days is a) clarifying UML diagrams b) setting up skeletons/ tasks to be completed and c) getting intro down that transitions into another state. Other sections will follow in subsequent plans
+
+Time line:
+By weekend (6/2) get intro work/ uml planning down
+By 6/5 get Solar System construct going
+By 6/8 work on collisions and streamlining animation
+Weekend fix bugs and implement end stages of star (if possible)
