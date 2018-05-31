@@ -1,1 +1,49 @@
+otter_Space
+Brian Lin
+Aleksandra Koroza
+Isaac Jon
+pd 2
+------------------------
+Space Architect Program 
 
+Note: 
+*  --> Time 
++++ --> Core Functionality 
+-  --> Delegated Work 
+###  --> Collaborative Work 
+()  --> Might not include 
+
+Prerequisites: Skeleton files for... 
+Driver 
+Nebula
+Gas
+Types of stars based on size (dwarf, main sequence, giants; we would have a cap as to how big or how small they can make it).
+int state is the main instance var to dictate the phases of the project
+
+Part 1: Intro
+- Intro screen with star nursery logo --> Processing and use Outer Space image as the background
+- Review how to incorporate user input.
+- Set state to Intro
+* Approximately 1-2 days
+
+Part 2: Nebula 
++++### Implement Gas class and Processing to mimic a Nebula in outer space ###+++   
+### Use key() and user input so that the bottom section of the screen would be used to get user input on the size and composition of desired star. The attributes are: size, _________________
+- State shifts from Intro to Nebula 
+* Approximately 3-4 days
+
+Part 3: Condensation 
++++### Once the user is done inputting their parameters for their desired star, implement Nebula such that all of the gas condenses at the point where the user clicked the mouse. The star formed will have a different size and color and shape depending on the user's data. ###+++
+- User can no longer change their star once they click on the gas
+* Approximately 2 days
+
+Part 4: Solar System 
+
+(Part 5: Again or Continue?) 
+
+Priority List: 
+1. Nebula 
+2. Solar System 
+3. Condensation 
+4. Intro 
+5. Again or Continue?  --> NOTE: Might not include if not enough time
