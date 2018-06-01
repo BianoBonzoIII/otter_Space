@@ -1,0 +1,3 @@
+class Rocky extends Planet{
+
+}

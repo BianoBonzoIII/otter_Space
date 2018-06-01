@@ -1,0 +1,4 @@
+class SolarSystem{
+Star root; 
+
+}

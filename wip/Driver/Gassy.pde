@@ -1,0 +1,3 @@
+class Gassy extends Planet{
+
+}
