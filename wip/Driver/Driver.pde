@@ -10,7 +10,6 @@ PImage img;
 void setup() {
   size(800, 800);
   img = loadImage("largeGalField.jpg");
-  
 }
 
 void draw() {
