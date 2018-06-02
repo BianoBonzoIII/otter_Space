@@ -11,7 +11,7 @@ PFont f;
 //state 0 vars
 int state =0;
 String a = "otter_Space presents...";
-String b = "Make your very own solar system!";
+String b = "The Space Architect Program!";
 String c = "{click on the screen to continue}";
 PImage img;
 float speed = 1.; 
@@ -61,20 +61,20 @@ void draw() {
       value+=speed;
       fill(255, fade); 
       textSize(45);
-      text(b, 0, 400);
+      text(b, 100, 400);
     } else { // String c
       value+=speed;
       fill(255, fade); 
       textSize(45);
-      text(c, 50, 300);
+      text(c, 50, 400);
     }
   }
 
   //nebula state
   else if (state == 1) {
     if (!gasIns) {
-      gas =new Gas();
-      gasIns=true;
+      gas = new Gas();
+      gasIns = true;
       background(203, 88, 88);
     }
     gas.noiseAnimate();
@@ -88,13 +88,34 @@ void draw() {
       msg = "Please specify a size: ";    
       text(msg, 20, 760);
       text(input, 500, 760);
-    } else {
+    }
+/* Add restriction to input size      
+    if (int(input) > 1708) {  
+      msg = "Too big!";
+      input = "";
+      text(msg, 20, 760);
+      text(input, 500, 760);
+    }
+    if (int(input) < 0.12) { 
+      msg = "Too small!";
+      input = "";
+      text(msg, 20, 760);
+      text(input, 500, 760);
+    }
+*/       
+    else {
       msg = "Please choose a location to place your star:"; 
       text(msg, 20, 760);
+      msgTyped = true;
     }
   } else if (state==2) {
-    background (255);
-    s.expand();
+    background(100);
+    //gas.noiseAnimate();
+    //s.expand();
+  }
+  
+  //animation state 
+  else if(state == 3) {
   }
 }
 
@@ -108,9 +129,11 @@ void mouseClicked() {
   }
 
   if (state==1 && msgTyped) {
-    s = new Star(mouseX, mouseY, /* can't get this to work Integer.parseInt(input) */ 50);
+    s = new Star(mouseX, mouseY, 50 ); //Note: Instead of Integer.parseInt(), just use int()
     state = 2;
+    s.expand();
   }
+  
 }
 
 void keyTyped() {
