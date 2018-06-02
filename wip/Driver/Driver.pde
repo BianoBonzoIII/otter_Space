@@ -22,7 +22,11 @@ int switches =0; // transitioning between strings a,b,c etc
 //state 1 vars
 Gas gas;
 boolean gasIns= false;
+boolean msgTyped = false;
+String msg;
+String input = ""; //Takes in user input
 //
+
 //state 2 vars
 //
 void setup() {
@@ -32,55 +36,75 @@ void setup() {
 }
 
 void draw() {
-  
-  if (state ==0){
+
+  if (state ==0) {
     image(img, 0, 0);
     fade = ((sin(radians(value))+1)/2)*MAX; // makes the fading more "organic"
-    if (fade== 0.0){
+    if (fade== 0.0) {
       switches++;
     }
-    
-    if (switches==0){ //String a
-  // with help from: https://forum.processing.org/two/discussion/12935/text-fade-in-out-with-millis
-  // ie. processing forum
-  //float fade = abs(sin(radians(value)))*MAX; <-- faster graphic
-  value+=speed;
-  fill(255, fade); 
-  textSize(70);
-  text(a,0,400);}
-  
-   else if (switches ==1){ //String b
-  value+=speed;
-  fill(255, fade); 
-  textSize(45);
-  text(b,0,400);}
-  
-  else { // String c
-  value+=speed;
-  fill(255, fade); 
-  textSize(45);
-  text(c,50,400);
+
+    if (switches==0) { //String a
+      // with help from: https://forum.processing.org/two/discussion/12935/text-fade-in-out-with-millis
+      // ie. processing forum
+      //float fade = abs(sin(radians(value)))*MAX; <-- faster graphic
+      value+=speed;
+      fill(255, fade); 
+      textSize(70);
+      text(a, 0, 400);
+    } else if (switches ==1) { //String b
+      value+=speed;
+      fill(255, fade); 
+      textSize(45);
+      text(b, 0, 400);
+    } else { // String c
+      value+=speed;
+      fill(255, fade); 
+      textSize(45);
+      text(c, 50, 300);
+    }
   }
 
+  //nebula state
+  if (state == 1) {
+
+    if (!gasIns) {
+      gas =new Gas();
+      gasIns=true;
+      background(203, 88, 88);
+    }
+    gas.noiseAnimate();
+    rect(-1, 700, 1000, 150);
+    textSize(36);
+    if (!msgTyped) {
+      msg = "Please specify a size: ";
+      text(msg, 20, 760);
+      text(input, 500, 760);
+    } else {
+      msg = "Please choose a location to place your star:"; 
+      text(msg, 20, 760);
+    }
+  }
 }
 
-//nebula state
-if (state == 1){
-  if (!gasIns){
-  gas =new Gas();
-  gasIns=true;
-  background(203,88,88);
-}
-  gas.noiseAnimate();
-}
-
+void mouseClicked() {
+  //intro screen transition to state 
+  //change number of switches to skip intro screen
+  if (state==0 && switches>=0) {
+    state=1;
+    //clear();
+  }
 }
 
-void mouseClicked(){
-//intro screen transition to state 
-//change number of switches to skip intro screen
-if (state==0 && switches>=0){
-  state=1;
-  //clear();
-}
+void keyTyped() {
+  if (!msgTyped) {
+    if (key == BACKSPACE) {
+      if (input.length()>0)
+        input = input.substring(0, input.length()-1);
+    } else
+      input += key;
+    if (key == ENTER) {
+      if (input.length() >= 0) msgTyped = true;
+    }
+  }
 }
