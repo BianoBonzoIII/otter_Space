@@ -109,9 +109,9 @@ void draw() {
       msgTyped = true;
     }
   } else if (state==2) {
-    background(100);
-    //gas.noiseAnimate();
-    //s.expand();
+    background(250);
+    s = new Star(mouseX, mouseY, int(input) ); //Note: Instead of Integer.parseInt(), just use int()
+    s.expand();
   }
   
   //animation state 

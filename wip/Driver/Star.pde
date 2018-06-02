@@ -15,8 +15,8 @@ class Star {
     xpos = x;
     ypos = y;
     MAX_RADIUS = radius;
+    rad = 50;
     c = color(2, 43, 249);
-    ellipse(xpos, ypos, 50, 50);
     //color gradient changes with bigger size
     //screen size 
     //ellipse coors specified by mouse location
