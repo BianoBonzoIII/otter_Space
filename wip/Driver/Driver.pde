@@ -129,8 +129,8 @@ void mouseClicked() {
   }
 
   if (state==1 && msgTyped) {
-    s = new Star(mouseX, mouseY, 50 ); //Note: Instead of Integer.parseInt(), just use int()
     state = 2;
+    s = new Star(mouseX, mouseY, int(input) ); //Note: Instead of Integer.parseInt(), just use int()
     s.expand();
   }
   
