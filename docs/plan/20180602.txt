@@ -1,0 +1,19 @@
+
+
+otter_Space
+Brian Lin
+Aleksandra Koroza
+Isaac Jon
+pd 2
+------------------------
+Space Architect Program
+Plan for 6/02/18
+
+Possible edits for intro
+-streamline vars
+- play with fonts to make prettier
+
+Complete Gas class and nebula user interface
+- using Noise3D found in online processing example, adapt and change colors
+^read up on what noise/ bright var means
+

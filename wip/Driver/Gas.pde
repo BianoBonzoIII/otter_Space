@@ -32,7 +32,7 @@ void noiseAnimate() {
       //float bright = random(0,255);
       
       // Set each pixel onscreen to a grayscale value
-      pixels[x+y*width] = color(bright,bright,bright);
+      pixels[x+y*width] = color(bright,bright,0);
     }
   }
   updatePixels();

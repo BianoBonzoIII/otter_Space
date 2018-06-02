@@ -69,6 +69,7 @@ if (state == 1){
   if (!gasIns){
   gas =new Gas();
   gasIns=true;
+  background(203,88,88);
 }
   gas.noiseAnimate();
 }
@@ -78,7 +79,7 @@ if (state == 1){
 void mouseClicked(){
 //intro screen transition to state 
 //change number of switches to skip intro screen
-if (state==0 && switches>=1){
+if (state==0 && switches>=0){
   state=1;
   //clear();
 }
