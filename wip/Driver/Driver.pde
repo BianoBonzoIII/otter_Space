@@ -24,6 +24,7 @@ int switches =0; // transitioning between strings a,b,c etc
 
 //state 1 vars
 Gas gas;
+Star s;
 boolean gasIns= false;
 boolean msgTyped = false;
 String msg;
@@ -70,18 +71,18 @@ void draw() {
   }
 
   //nebula state
-  if (state == 1) {
+  else if (state == 1) {
     if (!gasIns) {
       gas =new Gas();
       gasIns=true;
       background(203, 88, 88);
     }
     gas.noiseAnimate();
-    
+
     //Creates User Interface
     fill(color(0));
     rect(-1, 700, 1000, 150);
-    textFont(f,36);
+    textFont(f, 36);
     fill(color(250));
     if (!msgTyped) {
       msg = "Please specify a size: ";    
@@ -91,8 +92,12 @@ void draw() {
       msg = "Please choose a location to place your star:"; 
       text(msg, 20, 760);
     }
+  } else if (state==2) {
+    background (255);
+    s.expand();
   }
 }
+
 
 void mouseClicked() {
   //intro screen transition to state 
@@ -100,6 +105,11 @@ void mouseClicked() {
   if (state==0 && switches>=0) {
     state=1;
     //clear();
+  }
+
+  if (state==1 && msgTyped) {
+    s = new Star(mouseX, mouseY, /* can't get this to work Integer.parseInt(input) */ 50);
+    state = 2;
   }
 }
 
