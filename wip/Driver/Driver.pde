@@ -5,6 +5,9 @@ final static int ANIMATION = 2;
 final static int SOLAR = 3;
 final static int END = 4;
 
+//Text font
+PFont f;
+
 //state 0 vars
 int state =0;
 String a = "otter_Space presents...";
@@ -32,6 +35,7 @@ String input = ""; //Takes in user input
 void setup() {
   size(800, 800);
   img = loadImage("largeGalField.jpg");
+  f = createFont("Arial", 16, true);
   smooth();
 }
 
@@ -67,17 +71,20 @@ void draw() {
 
   //nebula state
   if (state == 1) {
-
     if (!gasIns) {
       gas =new Gas();
       gasIns=true;
       background(203, 88, 88);
     }
     gas.noiseAnimate();
+    
+    //Creates User Interface
+    fill(color(0));
     rect(-1, 700, 1000, 150);
-    textSize(36);
+    textFont(f,36);
+    fill(color(250));
     if (!msgTyped) {
-      msg = "Please specify a size: ";
+      msg = "Please specify a size: ";    
       text(msg, 20, 760);
       text(input, 500, 760);
     } else {
