@@ -6,32 +6,6 @@ pd 2
 ------------------------
 Space Architect Program 
 
-/////////// Zone of Reflection \\\\\\\\\\\
-------------------------------------------
-***OBSTACLES OVERCOME
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-<Wow, we so BOSS bc...>
-
-***UNRESOLVED ISSUES
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-<
-blah blah pesky bug...
-maybe some of these will move into the Obs.Ovrcm section...
->
-
-***COOL STUFF LEARNED
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-<wow! oo! etc!...>
-
-***MID-DEVELOPMENT DESIGN CHANGES
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-We changed ___ to ___ bc...
-<etc>
-<etc>
-
-***LESSONS LEARNED
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-<tales of wisdom gained...>
 
 ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
@@ -64,3 +38,64 @@ use in project
 Isaac :: create background image for 1st screen. Update driver
 Summary :: Started coding and laid out more details for our plan
 ==============================================================
+2018-05-31
+--------------------------------------------------------------
+Aleksandra :: plan update and uml work
+Brian :: uml work
+Isaac :: completed driver flow chart based on proposal
+Summary :: completed uml's and flowcharts have really given us a tighter grip/vision of the work that lies ahead
+==============================================================
+2018-06-01
+--------------------------------------------------------------
+Aleksandra :: lay out skeleton files, looked up ways to make convincing gas effect 
+Brian :: put down initial variables and states
+Isaac :: furthered discussion about transitions between states and organizing driver file
+Summary :: Began work on driver file and lay out classes we envision
+==============================================================
+2018-06-02
+--------------------------------------------------------------
+Aleksandra :: intro code and gas class work
+Brian :: user input in nebula phase
+Isaac :: also worked on user input/ intro work
+Summary :: intro going strong, transitions set up
+==============================================================
+==============================================================
+2018-06-03
+--------------------------------------------------------------
+- a rest/freak-out-about-other-projects day
+==============================================================
+==============================================================
+2018-06-04
+--------------------------------------------------------------
+Aleksandra :: tbd
+Brian :: tbd
+Isaac :: tbd
+Summary :: ??
+==============================================================
+
+
+/////////// Zone of Reflection \\\\\\\\\\\
+------------------------------------------
+***OBSTACLES OVERCOME
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+tbd
+
+***UNRESOLVED ISSUES
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- we still need to work on user input and star constructing/ gas coming together animation
+
+
+***COOL STUFF LEARNED
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- Perlin noise is a thing! Apparently it's a more "organic" way to randomize numbers.
+
+***MID-DEVELOPMENT DESIGN CHANGES
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+We changed ___ to ___ bc...
+<etc>
+<etc>
+
+***LESSONS LEARNED
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<tales of wisdom gained...>
