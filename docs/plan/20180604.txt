@@ -1,0 +1,32 @@
+
+otter_Space
+Brian Lin
+Aleksandra Koroza
+Isaac Jon
+pd 2
+------------------------
+Space Architect Program
+Plan for 6/04/18
+
+Note: 
+*  --> Time 
++++ --> Core Functionality 
+-  --> Delegated Work 
+###  --> Collaborative Work 
+()  --> Might not include
+
+ Although work remains to be done on the intro, we must keep moving forward
+to accomplish core functionality.
++++ (###) complete transition into state 2 during the class period. Requires some work with user input
+- one member read up on the concept of noise and how to change apparent density on screen. update gas 
+- other two members develop algo for star constructor and formation animation from state 1.
+
+
+This team is mostly on track. We envision the following progress:
+
+by the end of 6/5 get SolarSystem done and look at ways to incorporate collision functionality.
+
+use 6/6 to incorporate end stage messages and
+
+6/7 for final tweaks and smoothing user interface/ updating documentation + usage
+
