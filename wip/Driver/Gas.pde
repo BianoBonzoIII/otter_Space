@@ -2,12 +2,12 @@ class Gas{
 //source: https://processing.org/examples/noise3d.html
 //Using 3D noise to create simple animated texture. Here, the third dimension ('z') is treated as time.
 
- 
+ //size affects increment
 float increment = 0.01;
 // The noise function's 3rd argument, a global variable that increments once per cycle
 float zoff = 0.0;  
 // We will increment zoff differently than xoff and yoff
-float zincrement = 0.02; 
+float zincrement = 0.01; 
 
 
 
@@ -33,7 +33,7 @@ void noiseAnimate() {
       //float bright = random(0,255);
       
       // Set each pixel onscreen to a grayscale value
-      pixels[x+y*width] = color(bright,bright,0);
+      pixels[x+y*width] = color(bright,bright,bright);
     }
   }
   updatePixels();

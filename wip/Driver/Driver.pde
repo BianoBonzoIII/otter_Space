@@ -27,7 +27,7 @@ Gas gas;
 Star s;
 boolean gasIns= false;
 boolean msgTyped = false;
-String msg;
+String msg = "Please specify a size: ";  
 String input = ""; //Takes in user input
 //
 
@@ -84,38 +84,24 @@ void draw() {
     rect(-1, 700, 1000, 150);
     textFont(f, 36);
     fill(color(250));
+    
     if (!msgTyped) {
-      msg = "Please specify a size: ";    
+      //msg = "Please specify a size: ";    
       text(msg, 20, 760);
       text(input, 500, 760);
-    }
-/* Add restriction to input size      
-    if (int(input) > 1708) {  
-      msg = "Too big!";
-      input = "";
-      text(msg, 20, 760);
-      text(input, 500, 760);
-    }
-    if (int(input) < 0.12) { 
-      msg = "Too small!";
-      input = "";
-      text(msg, 20, 760);
-      text(input, 500, 760);
-    }
-*/       
-    else {
+    } else {
       msg = "Please choose a location to place your star:"; 
       text(msg, 20, 760);
-      msgTyped = true;
+      //msgTyped = true;
     }
   } else if (state==2) {
     background(250);
-    s = new Star(mouseX, mouseY, int(input) ); //Note: Instead of Integer.parseInt(), just use int()
+    //s = new Star(mouseX, mouseY, int(input) ); //Note: Instead of Integer.parseInt(), just use int()
     s.expand();
   }
-  
+
   //animation state 
-  else if(state == 3) {
+  else if (state == 3) {
   }
 }
 
@@ -133,18 +119,40 @@ void mouseClicked() {
     s = new Star(mouseX, mouseY, int(input) ); //Note: Instead of Integer.parseInt(), just use int()
     s.expand();
   }
-  
 }
 
 void keyTyped() {
   if (!msgTyped) {
+    
     if (key == BACKSPACE) {
       if (input.length()>0)
         input = input.substring(0, input.length()-1);
     } else
       input += key;
+    
     if (key == ENTER) {
-      if (input.length() >= 0) msgTyped = true;
+      //Add restriction to input size  
+      //msgTyped =true;
+///*
+      if (input.length() >= 0) { // message is done when enter pressed
+        if (int(input) > 1708) {  
+          msg = "Too big!";
+          input = "";
+          text(msg, 20, 760);
+          text(input, 500, 760);
+        }
+        if (int(input) < 12) { 
+          msg = "Too small!";
+          input = "";
+          text(msg, 20, 760);  
+          text(input, 500, 760);
+        }
+
+        
+      }
+    //  */
+      else{
+      msgTyped =true;}
     }
   }
 }
