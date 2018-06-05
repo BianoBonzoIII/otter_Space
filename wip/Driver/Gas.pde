@@ -47,7 +47,7 @@ void noiseAnimate() {
   
 }
 
-void noiseAnimateCondense(int currX, int currY) {
+void noiseAnimateCondense(Star s, float currX, float currY) {
   // Optional: adjust noise detail here
   //ie changes "bluriness"
    noiseDetail(10,0.7f);
@@ -57,7 +57,7 @@ void noiseAnimateCondense(int currX, int currY) {
   float xoff = 0.0; // Start xoff at 0
   
   // For every x,y coordinate in a 2D space, calculate a noise value and produce a brightness value
-  for (int x = 0; x < currX; x++) {
+  for (int x= currX-Driver.s.getRad(); x < currX; x++) {
     xoff += increment;   // Increment xoff 
     float yoff = 0.0;   // For every xoff, start yoff at 0
     for (int y = 0; y < currY; y++) {

@@ -29,7 +29,7 @@ boolean gasIns= false;
 boolean msgTyped;
 String msg = "Please specify a size: ";  
 String input = ""; //Takes in user input
-//boolean starPlaced;// false
+boolean starPlaced;// false until state 2
 //
 
 //state 2 vars
@@ -100,7 +100,7 @@ void draw() {
     //============== Animation State ==================
   } else if (state==2) {
     //background(250);
-    gas.noiseAnimateCondense(mouseX,mouseY);
+    gas.noiseAnimateCondense(s,s.getX(),s.getY());
     //s.expand();
   }
   //==================================================
@@ -123,8 +123,8 @@ void mouseClicked() {
   if (state==1 && msgTyped) {
     state = 2;
     //gas.noiseAnimateCondense(mouseX, mouseY);
-    //s = new Star(mouseX, mouseY, int(input) ); 
-    //starPlaced=true;
+    s = new Star(mouseX, mouseY, int(input) ); 
+    starPlaced=true;
     //s.expand();
   }
 }

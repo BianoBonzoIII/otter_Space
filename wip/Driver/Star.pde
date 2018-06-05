@@ -1,10 +1,10 @@
 /*
 Scale from Solar Radii to Ellipse Size: 
-==Input==   ==Ellipse==
-  1   -->  rad = 5 
-  1708   -->  rad = 400;
-  Change Factor: 1 solar radii --> +0.2314 rad 
-*/
+ ==Input==   ==Ellipse==
+ 1   -->  rad = 5 
+ 1708   -->  rad = 400;
+ Change Factor: 1 solar radii --> +0.2314 rad 
+ */
 
 class Star {
   final float MAX_RADIUS;
@@ -36,8 +36,7 @@ class Star {
       rad -= changeFactor;
       fill(c);
       ellipse(xpos, ypos, rad, rad);
-    }
-    else {
+    } else {
       fill(c);
       rad += changeFactor;
       ellipse(xpos, ypos, rad, rad); //Places the ellipse
@@ -50,5 +49,18 @@ class Star {
   }
   // use shininess(float)
   void shine() {
+  }
+
+//returning positions, initiated by user's mouseX and mouseY
+  float getX() {
+    return xpos;
+  }
+  float getY() {
+    return ypos;
+  }
+  
+  //getting radius for gas function
+  float getRad(){
+    return rad;
   }
 }
