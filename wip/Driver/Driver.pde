@@ -86,7 +86,7 @@ void draw() {
     textFont(f, 36);
     fill(color(250));
 
-    if (!msgTyped) {  
+    if (!msgTyped) {
       text(msg, 20, 760);
       text(input, 500, 760);
     } else {
@@ -130,30 +130,32 @@ void keyTyped() {
     if (key == BACKSPACE) {
       if (input.length()>0)
         input = input.substring(0, input.length()-1);
-    } else
-      input += key;
+    } 
     if (key == ENTER) {
+      if(msg.equals("Too small!") || msg.equals("Too big!")) {
+         msg = "Please specify a size: ";  
+      }
       //Add restriction to input size  
-      if (input.length() >= 0) { // message is done when enter pressed
+      if (input.length() > 0) { // message is done when enter pressed
         float f = Float.parseFloat(input);
         if ( f > 1708) {  
           msg = "Too big!";
           input = "";
-          text(msg, 20, 760);
-          text(input, 500, 760);
+          //text(msg, 20, 760);
+          //text(input, 500, 760);
         }
-        if (f < 1) {
+        else if (f < 12) {
           msg = "Too small!";
           input = "";
-          text(msg, 20, 760);  
-          text(input, 500, 760);
+          //text(msg, 20, 760);  
+          //text(input, 500, 760);
         }
-        if ( f >= 12 && f <= 1708 ) {
+        else {
           msgTyped = true;
         }
-      } else {
-        msgTyped =true;
       }
     }
+    else
+      input += key;
   }
 }
