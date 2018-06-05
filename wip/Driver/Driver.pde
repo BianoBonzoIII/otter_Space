@@ -41,7 +41,7 @@ void setup() {
 }
 
 void draw() {
-
+  //==================== Intro State =======================
   if (state ==0) {
     image(img, 0, 0);
     fade = ((sin(radians(value))+1)/2)*MAX; // makes the fading more "organic"
@@ -69,8 +69,9 @@ void draw() {
       text(c, 50, 400);
     }
   }
+  //============================================================
 
-  //nebula state
+  //================ Nebula State ==================
   else if (state == 1) {
     if (!gasIns) {
       gas = new Gas();
@@ -85,24 +86,27 @@ void draw() {
     textFont(f, 36);
     fill(color(250));
 
-    if (!msgTyped) {
-      //msg = "Please specify a size: ";    
+    if (!msgTyped) {  
       text(msg, 20, 760);
       text(input, 500, 760);
     } else {
       msg = "Please choose a location to place your star:"; 
       text(msg, 20, 760);
-      //msgTyped = true;
     }
+    //===================================================
+
+    //============== Animation State ==================
   } else if (state==2) {
-    background(250);
-    //s = new Star(mouseX, mouseY, int(input) ); //Note: Instead of Integer.parseInt(), just use int()
+    //background(250);
+    gas.noiseAnimate();
     s.expand();
   }
+  //==================================================
 
-  //animation state 
+  //====================== Solar System State ================== 
   else if (state == 3) {
   }
+  //============================================================
 }
 
 
@@ -116,33 +120,29 @@ void mouseClicked() {
 
   if (state==1 && msgTyped) {
     state = 2;
-    s = new Star(mouseX, mouseY, int(input) ); //Note: Instead of Integer.parseInt(), just use int()
+    s = new Star(mouseX, mouseY, int(input) ); 
     s.expand();
   }
 }
 
 void keyTyped() {
   if (!msgTyped) {
-
     if (key == BACKSPACE) {
       if (input.length()>0)
         input = input.substring(0, input.length()-1);
     } else
       input += key;
-
     if (key == ENTER) {
       //Add restriction to input size  
       if (input.length() >= 0) { // message is done when enter pressed
         float f = Float.parseFloat(input);
         if ( f > 1708) {  
-          msg = "";
           msg = "Too big!";
           input = "";
           text(msg, 20, 760);
           text(input, 500, 760);
         }
-        if (f < 12) {
-          msg = "";
+        if (f < 1) {
           msg = "Too small!";
           input = "";
           text(msg, 20, 760);  

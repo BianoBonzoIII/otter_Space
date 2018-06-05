@@ -3,11 +3,11 @@ class Gas{
 //Using 3D noise to create simple animated texture. Here, the third dimension ('z') is treated as time.
 
  //size affects increment
-float increment = 0.01;
+float increment = 0.01; // Density 
 // The noise function's 3rd argument, a global variable that increments once per cycle
 float zoff = 0.0;  
 // We will increment zoff differently than xoff and yoff
-float zincrement = 0.01; 
+float zincrement = 0.01; // Gas Movement Speed
 
 
 
