@@ -8,12 +8,16 @@ float increment = 0.01; // Density
 float zoff = 0.0;  
 // We will increment zoff differently than xoff and yoff
 float zincrement = 0.01; // Gas Movement Speed
+//curr height
+int h =height;
+//curr width
+int w =width;
 
-
-
+//currX and currY
 void noiseAnimate() {
   // Optional: adjust noise detail here
-  // noiseDetail(8,0.65f);
+  //ie changes "bluriness"
+   noiseDetail(10,0.7f);
   
   loadPixels();
 
@@ -24,6 +28,39 @@ void noiseAnimate() {
     xoff += increment;   // Increment xoff 
     float yoff = 0.0;   // For every xoff, start yoff at 0
     for (int y = 0; y < height; y++) {
+      yoff += increment; // Increment yoff
+      
+      // Calculate noise and scale by 255
+      float bright = noise(xoff,yoff,zoff)*255;
+
+      // Try using this line instead
+      //float bright = random(0,255);
+      
+      // Set each pixel onscreen to a grayscale value
+      pixels[x+y*width] = color(bright,bright,bright);
+    }
+  }
+  updatePixels();
+  
+  zoff += zincrement; // Increment zoff
+  
+  
+}
+
+void noiseAnimateCondense(int currX, int currY) {
+  // Optional: adjust noise detail here
+  //ie changes "bluriness"
+   noiseDetail(10,0.7f);
+  
+  loadPixels();
+
+  float xoff = 0.0; // Start xoff at 0
+  
+  // For every x,y coordinate in a 2D space, calculate a noise value and produce a brightness value
+  for (int x = 0; x < currX; x++) {
+    xoff += increment;   // Increment xoff 
+    float yoff = 0.0;   // For every xoff, start yoff at 0
+    for (int y = 0; y < currY; y++) {
       yoff += increment; // Increment yoff
       
       // Calculate noise and scale by 255

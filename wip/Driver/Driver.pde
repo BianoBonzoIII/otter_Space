@@ -26,9 +26,10 @@ int switches =0; // transitioning between strings a,b,c etc
 Gas gas;
 Star s;
 boolean gasIns= false;
-boolean msgTyped = false;
+boolean msgTyped;
 String msg = "Please specify a size: ";  
 String input = ""; //Takes in user input
+//boolean starPlaced;// false
 //
 
 //state 2 vars
@@ -78,6 +79,7 @@ void draw() {
       gasIns = true;
       background(203, 88, 88);
     }
+    
     gas.noiseAnimate();
 
     //Creates User Interface
@@ -98,8 +100,8 @@ void draw() {
     //============== Animation State ==================
   } else if (state==2) {
     //background(250);
-    gas.noiseAnimate();
-    s.expand();
+    gas.noiseAnimateCondense(mouseX,mouseY);
+    //s.expand();
   }
   //==================================================
 
@@ -120,8 +122,10 @@ void mouseClicked() {
 
   if (state==1 && msgTyped) {
     state = 2;
-    s = new Star(mouseX, mouseY, int(input) ); 
-    s.expand();
+    //gas.noiseAnimateCondense(mouseX, mouseY);
+    //s = new Star(mouseX, mouseY, int(input) ); 
+    //starPlaced=true;
+    //s.expand();
   }
 }
 
