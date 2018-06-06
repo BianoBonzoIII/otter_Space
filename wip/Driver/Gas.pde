@@ -18,6 +18,8 @@ class Gas {
   final static int STEP = 10;
   //current diameter
   int currDiam = STARTDIAM;
+  //boolean seeing if condensed
+  boolean condensed; 
 
 
 

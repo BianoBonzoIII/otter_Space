@@ -1,8 +1,9 @@
 /*
 Scale from Solar Radii to Ellipse Size: 
  ==Input==   ==Ellipse==
- 1   -->  rad = 5 
- 1708   -->  rad = 400;
+ 12  -->  rad = 5 
+ 1708   -->  rad = 300;
+ scale factor --> 
  Change Factor: 1 solar radii --> +0.2314 rad 
  */
 
@@ -24,7 +25,7 @@ class Star {
     xpos = x;
     ypos = y;
     MAX_RADIUS = radius;
-    rad = 5;
+    rad = radius; //solar radii
     c = color(2, 43, 249);
     //color gradient changes with bigger size
     //screen size 

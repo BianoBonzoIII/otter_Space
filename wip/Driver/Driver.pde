@@ -101,6 +101,7 @@ void draw() {
   } else if (state==2) {
     //background(250);
     gas.noiseAnimateCondense(s,s.getX(),s.getY());
+    
     //s.expand();
   }
   //==================================================
