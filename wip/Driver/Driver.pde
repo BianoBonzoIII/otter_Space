@@ -45,7 +45,7 @@ float sunX = width/2;
 float sunY = height/2; // Suns x and y coordinate
 //
 void setup() {
-  size(800, 800);
+  size(700, 700);
   img = loadImage("largeGalField.jpg");
   f = createFont("Arial", 16, true);
   smooth();
@@ -121,6 +121,7 @@ void draw() {
   //====================== Solar System State ================== 
   else if (state == 3) {
     // instantiate a solar system giving 
+    
     //Larger speeds decrease revolution time
     earthSpeed+= .005;
     moonSpeed+= .05;
