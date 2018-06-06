@@ -96,5 +96,8 @@ class Gas {
 
     zoff += zincrement; // Increment zoff
     currDiam = Math.max(currDiam-STEP,s.getRad());
+    if (currDiam == s.getRad()){
+    condensed=true;
+    }
   }
 }

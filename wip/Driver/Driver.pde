@@ -33,6 +33,16 @@ boolean starPlaced;// false until state 2
 //
 
 //state 2 vars
+//n/a
+//
+
+//state 3 vars
+
+float moonX, moonY; //Moon x and y coordinate
+float earthX, earthY; //Earth x and y coordinate
+float earthSpeed, moonSpeed; // The rate at which the bodies revolve
+float sunX = width/2;
+float sunY = height/2; // Suns x and y coordinate
 //
 void setup() {
   size(800, 800);
@@ -79,7 +89,7 @@ void draw() {
       gasIns = true;
       background(203, 88, 88);
     }
-    
+
     gas.noiseAnimate();
 
     //Creates User Interface
@@ -100,14 +110,38 @@ void draw() {
     //============== Animation State ==================
   } else if (state==2) {
     //background(250);
-    gas.noiseAnimateCondense(s,s.getX(),s.getY());
-    
+    gas.noiseAnimateCondense(s, s.getX(), s.getY());
+    if (gas.condensed) {
+      state =3;
+    }
     //s.expand();
   }
   //==================================================
 
   //====================== Solar System State ================== 
   else if (state == 3) {
+    // instantiate a solar system giving 
+    //Larger speeds decrease revolution time
+    earthSpeed+= .005;
+    moonSpeed+= .05;
+
+    //To establish simple harmonic motion, I used sin funcitons
+    earthX = 175*sin(earthSpeed+PI/2)+sunX;
+    earthY = 175*sin(earthSpeed)+sunY;
+    moonX = 40*sin(moonSpeed+PI/2)+earthX;
+    moonY = 40*sin(moonSpeed)+earthY;
+
+    background(0);
+
+    fill(0, 0, 255);
+    stroke(0, 0, 150);
+    ellipse(earthX, earthY, 30, 30);
+    fill(200);
+    stroke(150);
+    ellipse(moonX, moonY, 10, 10);
+    fill(255, 255, 0);
+    stroke(150, 150, 0);
+    ellipse(sunX, sunY, 200, 200);
   }
   //============================================================
 }
@@ -137,8 +171,8 @@ void keyTyped() {
         input = input.substring(0, input.length()-1);
     } 
     if (key == ENTER) {
-      if(msg.equals("Too small!") || msg.equals("Too big!")) {
-         msg = "Please specify a size: ";  
+      if (msg.equals("Too small!") || msg.equals("Too big!")) {
+        msg = "Please specify a size: ";
       }
       //Add restriction to input size  
       if (input.length() > 0) { // message is done when enter pressed
@@ -148,19 +182,16 @@ void keyTyped() {
           input = "";
           //text(msg, 20, 760);
           //text(input, 500, 760);
-        }
-        else if (f < 12) {
+        } else if (f < 12) {
           msg = "Too small!";
           input = "";
           //text(msg, 20, 760);  
           //text(input, 500, 760);
-        }
-        else {
+        } else {
           msgTyped = true;
         }
       }
-    }
-    else
+    } else
       input += key;
   }
 }
