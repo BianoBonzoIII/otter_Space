@@ -8,8 +8,8 @@ Scale from Solar Radii to Ellipse Size:
 
 class Star {
   final float MAX_RADIUS;
-  float xpos, ypos;
-  float rad;
+  int xpos, ypos;
+  int rad;
   float changeFactor = 0.2314;
   color c;
 
@@ -20,7 +20,7 @@ class Star {
   //algo: 
   // 800x800
   //needs exper.
-  Star(float x, float y, float radius) {
+  Star(int x, int y, int radius) {
     xpos = x;
     ypos = y;
     MAX_RADIUS = radius;
@@ -52,15 +52,15 @@ class Star {
   }
 
 //returning positions, initiated by user's mouseX and mouseY
-  float getX() {
+  int getX() {
     return xpos;
   }
-  float getY() {
+  int getY() {
     return ypos;
   }
   
   //getting radius for gas function
-  float getRad(){
+  int getRad(){
     return rad;
   }
 }
