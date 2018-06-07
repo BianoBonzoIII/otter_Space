@@ -16,13 +16,6 @@ class SolarSystem {
   }
 
   /*************** FOR REFERENCE
-   //Larger speeds decrease revolution time
-   earthSpeed += .005;
-   moonSpeed += .05;
-   
-   //To establish simple harmonic motion, I used sin funcitons
-   earthX = 175*sin(earthSpeed+PI/2)+sunX;
-   earthY = 175*sin(earthSpeed)+sunY;
    moonX = 40*sin(moonSpeed+PI/2)+earthX;
    moonY = 40*sin(moonSpeed)+earthY;
    
@@ -40,8 +33,8 @@ class SolarSystem {
    ******************/
 
   void move() {
-    
-    
+
+
 
     background(0);
 
@@ -55,15 +48,19 @@ class SolarSystem {
     stroke(150, 150, 0);
     ellipse(sunX, sunY, 200, 200);
   }
-  void addPlanet() {
-    Planet p = new Planet(width/2-amp,height/2, 25., amp, pSpeedInc);
+  void addPlanet(int i) {
+    Planet p;
+    if (i==1) {
+      p = new Gassy(width/2-amp, height/2, 75., amp, pSpeedInc);
+    } else {
+      p = new Rocky(width/2-amp, height/2, 25., amp, pSpeedInc);
+    }
+
     arr.add(p);
     amp += 50;
     pSpeedInc -= 0.002;
   }
 
-  void addMoon( Planet p ) {
-  }
 
   void removePlanet( Planet p) {
   }

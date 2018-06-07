@@ -1,7 +1,10 @@
 class Gassy extends Planet {
+  
 
-  Gassy( Planet p) {
-    super( p.getX(), p.getY(), p.getRad(), p.pAmp, p.spdInc);
+  Gassy( float x, float y, float radius, int amp, float pSpeedInc ) {
+    super(x, y, radius, amp, pSpeedInc);
+    c= color(240,183,60);
   }
+  
   
 }

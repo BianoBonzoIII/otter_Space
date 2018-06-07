@@ -54,6 +54,8 @@ String choice3 = "Comet";
 String choice4 = "Asteroid";
 //solar system once 
 SolarSystem sys;
+boolean paused;
+float temp;
 
 /*******FOR REFERENCE
  float moonX, moonY; //Moon x and y coordinate
@@ -79,6 +81,19 @@ void setup() {
   circleX = 500;
   circleY = 650;
 }
+
+/*void stop() {
+ float temp;
+ for (Planet p : sys.arr) {
+ temp = p.spdInc;
+ if (paused) {
+ p.spdInc = 0;
+ } else {
+ p.spdInc = temp;
+ p.orbit();
+ }
+ }
+ }*/
 
 void draw() {
   //==================== Intro State =======================
@@ -134,20 +149,21 @@ void draw() {
       textSize(30);
       msg = "Please choose a location to place your star:"; 
       text(msg, 10, 660);
-    }}
-    //===================================================
-/*
-    //============== Animation State ==================
-  } else if (state==2) {   
-    gas.noiseAnimateCondense(s, s.getX(), s.getY());
-    s.expand();
-
-    if (gas.condensed) {
-      state = 3;
     }
   }
-  //==================================================
-  */
+  //===================================================
+  /*
+    //============== Animation State ==================
+   } else if (state==2) {   
+   gas.noiseAnimateCondense(s, s.getX(), s.getY());
+   s.expand();
+   
+   if (gas.condensed) {
+   state = 3;
+   }
+   }
+   //==================================================
+   */
 
   //====================== Solar System State ================== 
   //###NOTE###: Rectangle will be Planet and Moon will be Moon 
@@ -157,22 +173,34 @@ void draw() {
   else if (state == 2) {
     clear();
     fill(s.c);
-    ellipse(0,0,50,50);
-    
+    ellipse(width/2, height/2, 100, 100);
+
     //creates a new solar system and given the star
     //star has radius, color and position on screen
     //new SolarSystem(s);
-    for(Planet p: sys.arr) {
-       p.orbit(); 
+    for (Planet p : sys.arr) {
+      //float temp = p.spdInc;
+      for(Moon m: p.moonArr) {
+         m.orbit(); 
+      }
+      p.orbit();
+      if (dist(mouseX, mouseY, p.planetX, p.planetY) < p.getRad()) {
+        //temp=p.spdInc;
+        p.spdInc = 0;
+        p.spdInc=temp;
+      } 
+      if (dist(mouseX, mouseY, p.planetX, p.planetY) > p.getRad()) {
+        temp=p.spdInc;
+        p.spdInc = temp;
+        p.orbit();
+        //stop();
+      }
     }
-    
 
-    
-    
-    
+
     // button
     update(mouseX, mouseY);
-    
+
     if (rectOver) {
       fill(rectHighlight);
     } else {
@@ -180,7 +208,7 @@ void draw() {
     }
     stroke(250);
     rect(rectX, rectY, rectSize, rectSize);
-    
+
     if (circleOver) {
       fill(circleHighlight);
     } else {
@@ -191,10 +219,9 @@ void draw() {
 
     msg = "Please Choose: ";
     text(msg, 20, 660);
-    
   }
 }
-  //============================================================
+//============================================================
 
 void update(int x, int y) {
   if ( overCircle(circleX, circleY, circleSize) ) {
@@ -254,15 +281,23 @@ Scale from Solar Radii to Ellipse Size:
   }
 
   //Include two if statements for clicking Moon button or clicking Planet button
- if(state == 2) {
-   if (circleOver) {
-      sys.addPlanet();
-   }
-   if (rectOver) {
-   currentColor = rectColor;
-   }  
- }
-
+  if (state == 2) {
+    //circle is gassy planet
+    if (sys.arr.size()<6) {
+      if (circleOver) {
+        sys.addPlanet(1);
+      }
+      //rect is rocky
+      if (rectOver) {
+        sys.addPlanet(0);
+      }
+    }
+    for (Planet p : sys.arr) {
+      if (dist(mouseX, mouseY, p.planetX, p.planetY) < p.getRad()) {
+        p.addMoon();
+      } 
+    }
+  }
 }
 
 void keyTyped() {
@@ -289,7 +324,8 @@ void keyTyped() {
         }
       }
     } else {
-      if(key != BACKSPACE)
-      input += key;
+      if (key != BACKSPACE)
+        input += key;
     }
-  }}
+  }
+}
