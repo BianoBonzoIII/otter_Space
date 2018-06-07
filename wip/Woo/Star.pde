@@ -11,7 +11,7 @@ class Star {
   final float MAX_RADIUS;
   int starX, starY;
   float rad;
-  float changeFactor = 2.5;
+  float changeFactor = 1.5;
   color c;
   boolean starDone;
 
@@ -27,52 +27,78 @@ class Star {
     starY = y;
     MAX_RADIUS = radius;
     rad = 0; //solar radii
-    if ( MAX_RADIUS >= 500 ) {
-      c = color(174, 212, 227);
-    } else if ( MAX_RADIUS < 500) {
-      c = color(250,5,210);
+    //12, 136, 260, 384, 508, 638, 756, 880 
+    if (MAX_RADIUS >= 756) {
+      //blue 
+      c=color(3, 16, 252);
+    }
+    else if (MAX_RADIUS >= 638) {
+      //blue white 
+      c=color(48, 208, 250);
+    }
+    else if (MAX_RADIUS >= 508) {
+      //white blue 
+      c=color(176, 236, 252);
+    }
+    else if (MAX_RADIUS >= 384) {
+      //white 
+      c=color(255);
     }
 
+    else if (MAX_RADIUS >= 260) {
+      //yellow 
+      c=color(247, 247, 0 );
+    }
+    else if (MAX_RADIUS >= 136) {
+      //orange 
+      c=color(255, 102, 0);
+    }
+    else {
+      //orange red 
+      c=color(240, 96, 0);
+    }
+  }
+
+  
+  //color gradient changes with bigger size
+  //screen size 
+  //ellipse coors specified by mouse location
+
+
+void expand() {
+  /* if (abs(rad-MAX_RADIUS) <= 0.2314) {
+   starDone = true;
+   fill(c);
+   ellipse(starX, starY, rad, rad);
+   } */  if (rad >= 100) { 
+    starDone=true;
     fill(c);
-    //color gradient changes with bigger size
-    //screen size 
-    //ellipse coors specified by mouse location
+    ellipse(starX, starY, rad, rad);
+  } else {
+    fill(c);
+    rad += changeFactor;
+    ellipse(starX, starY, rad, rad); //Places the ellipse
   }
+}
 
-  void expand() {
-    /* if (abs(rad-MAX_RADIUS) <= 0.2314) {
-     starDone = true;
-     fill(c);
-     ellipse(starX, starY, rad, rad);
-     } */    if (rad >= MAX_RADIUS) { 
-      starDone=true;
-      fill(c);
-      ellipse(starX, starY, rad, rad);
-    } else {
-      fill(c);
-      rad += changeFactor;
-      ellipse(starX, starY, rad, rad); //Places the ellipse
-    }
-  }
+// gives the illusion of rotating star at fixed point
+// may use rotate()
+void revolve() {
+}
+// use shininess(float)
+void shine() {
+}
 
-  // gives the illusion of rotating star at fixed point
-  // may use rotate()
-  void revolve() {
-  }
-  // use shininess(float)
-  void shine() {
-  }
+//returning positions, initiated by user's mouseX and mouseY
+int getX() {
+  return starX;
+}
+int getY() {
+  return starY;
+}
 
-  //returning positions, initiated by user's mouseX and mouseY
-  int getX() {
-    return starX;
-  }
-  int getY() {
-    return starY;
-  }
-
-  //getting radius for gas function
-  float getRad() {
-    return rad;
-  }
+//getting radius for gas function
+float getRad() {
+  return rad;
+}
 }

@@ -165,7 +165,7 @@ void draw() {
     s.expand();
 
     if (gas.condensed) {
-      state = 3;
+      state = 2;
     }
   }
   //==================================================
@@ -179,8 +179,9 @@ void draw() {
   else if (state == 2) {
 
     clear();
+    image(img, 0, 0);
     fill(s.c);
-    ellipse(width/2, height/2, 100, 100);
+    s.expand();
 
     //creates a new solar system and given the star
     //star has radius, color and position on screen
@@ -229,6 +230,7 @@ void draw() {
   } else if (state == 3) {
 
     clear();
+    image(img, 0, 0);
     fill(s.c);
     ellipse(width/2, height/2, 100, 100);
 
@@ -373,13 +375,13 @@ void keyTyped() {
           if ( f > 880) {  
             msg = "Too big!";
             input = "";
-          } else if (f < .12) {
+          } else if (f < 12) {
             msg = "Too small!";
             input = "";
           } else {
             msgTyped = true;
             state = 10;
-            s = new Star(width/2, height/2, (5 + ( (int(input) - 1) * 0.174 ))); 
+            s = new Star(width/2, height/2, f); 
             starPlaced = true;        
             sys = new SolarSystem(s);
             //gas.noiseAnimateCondense(s, mouseX, mouseY);
