@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 class Planet {
-  final int TYPE = -1;
+  int type;
   final float MAX_RADIUS;
   float rad, starDist;
   float planetSpeed = 100;
@@ -31,7 +31,10 @@ class Planet {
     //screen size 
     //ellipse coors specified by mouse location
   }
-
+  
+  int getType() {
+  return type; 
+  }
 
   void orbit() {
 

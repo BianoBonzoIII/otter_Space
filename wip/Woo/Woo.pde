@@ -31,7 +31,7 @@ String input = ""; //Takes in user input
 boolean starPlaced;// false until state 2
 //
 
-//===== state 2 vars =====
+//===== state 10 vars =====
 //n/a
 //
 
@@ -158,18 +158,18 @@ void draw() {
     }
   }
   //===================================================
-  /*
-    //============== Animation State ==================
-   } else if (state==2) {   
-   gas.noiseAnimateCondense(s, s.getX(), s.getY());
-   s.expand();
-   
-   if (gas.condensed) {
-   state = 3;
-   }
-   }
-   //==================================================
-   */
+
+  //============== Animation State ==================
+  else if (state==10) {  //Added after other states 
+    gas.noiseAnimateCondense(s, s.getX(), s.getY());
+    s.expand();
+
+    if (gas.condensed) {
+      state = 3;
+    }
+  }
+  //==================================================
+
 
   //====================== Solar System State ================== 
   //###NOTE###: Rectangle will be Planet and Moon will be Moon 
@@ -231,7 +231,6 @@ void draw() {
     clear();
     fill(s.c);
     ellipse(width/2, height/2, 100, 100);
-    ellipse (0,0,100,100);
 
     //creates a new solar system and given the star
     //star has radius, color and position on screen
@@ -255,10 +254,19 @@ void draw() {
       }
     }
   } else if (state==4) {
+
     background(90, 148, 185);
-    rect(0, 200, 700, 600);
     fill(170, 118, 14);
-    //((Rocky)sel).drawColony();
+    rect(0, 200, 700, 600);
+
+
+    fill(0);
+    rect(-1, -1, 200, 60);
+    fill(255);
+    textSize(20);
+    text(msg, 2, 20);
+    text(input, 2, 40);
+    ((Rocky)sel).drawColony();
   }
 }
 
@@ -313,14 +321,6 @@ Scale from Solar Radii to Ellipse Size:
    Formula --> 5 + (input - 1)(0.174)
    Change Factor: 1 solar radii --> +0.174 rad 
    */
-  if (state==1 && msgTyped) {
-    state = 2;
-    s = new Star(mouseX, mouseY, (5 + ( (int(input) - 1) * 0.174 ))); 
-    starPlaced = true;        
-    sys = new SolarSystem(s);
-    //gas.noiseAnimateCondense(s, mouseX, mouseY);
-    //s.expand();
-  }
 
   //Include two if statements for clicking Moon button or clicking Planet button
   if (state == 2) {
@@ -345,22 +345,14 @@ Scale from Solar Radii to Ellipse Size:
   }
   if (state == 3) {
     for (Planet p : sys.arr) {
-      print("works");
-      if (dist(mouseX, mouseY, p.planetX, p.planetY) < p.getRad() &&  p.TYPE == 1) {
+      if (dist(mouseX, mouseY, p.planetX, p.planetY) < p.getRad() &&  p.getType() == 0) {
         sel=p;
         state = 4;
-        print("state");
-        
+        input ="";
+        msg = "Choose a number";
       }
-
-      //for each planet, if type is rocky and minigame = false
     }
   }
-
-
-  //else if (minigame) {
-  // clear();
-  //}
 }
 
 
@@ -386,6 +378,12 @@ void keyTyped() {
             input = "";
           } else {
             msgTyped = true;
+            state = 10;
+            s = new Star(width/2, height/2, (5 + ( (int(input) - 1) * 0.174 ))); 
+            starPlaced = true;        
+            sys = new SolarSystem(s);
+            //gas.noiseAnimateCondense(s, mouseX, mouseY);
+            //s.expand();
           }
         }
       } else {
@@ -399,17 +397,45 @@ void keyTyped() {
     }
   } else if (state ==3) {// when click on rocky planet, go to stage 4
     //if (key ==ENTER){
-     // state=4;
+    // state=4;
     //}
-    
+
     if (key == BACKSPACE) { //if stage = 3, go to stage 2
       state=2;
     }
   }
   //this is actual visuals of the mx heap colony thingy
   else if (state==4) {
+
     if (key == 'q') {
       state=3;
+    }
+    if (key == BACKSPACE) {
+      if (input.length()>0)
+        input = input.substring(0, input.length()-1);
+    } 
+    if (key == ENTER) {
+      if (msg.equals("Too small!") || msg.equals("Too big!")) {
+        msg = "Choose a number";
+      }
+      //Add restriction to input size  
+      if (input.length() > 0) { // message is done when enter pressed
+        int f = int(input);
+
+        if ( f > 100) {  
+          msg = "Too big!";
+          input = "";
+        } else if (f < 20) {
+          msg = "Too small!";
+          input ="";
+        } else {
+          ((Rocky)sel).colony.add(f);
+          input = "";
+        }
+      }
+    } else {
+      if (key != BACKSPACE)
+        input += key;
     }
   }
 }

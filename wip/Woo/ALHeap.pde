@@ -11,7 +11,7 @@ public class ALHeap
 {
 
   //instance vars
-  private ArrayList<Integer> _heap; 
+  public ArrayList<Integer> _heap; 
 
   /*****************************************************
    * default constructor  ---  inits empty heap
