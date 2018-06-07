@@ -288,7 +288,9 @@ void keyTyped() {
           msgTyped = true;
         }
       }
-    } else
+    } else {
+      if(key != BACKSPACE)
       input += key;
+    }
   }
 }
