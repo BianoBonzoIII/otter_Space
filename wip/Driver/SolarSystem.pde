@@ -1,9 +1,8 @@
-class SolarSystem{
+class SolarSystem {
   Star root; 
   ArrayList<Planet> arr;
   int xPosStar;
   int yPosStar; 
-  
   
   SolarSystem( Star s ) {
     xPosStar= s.getX();
@@ -12,16 +11,14 @@ class SolarSystem{
   }
   
   void addPlanet() {
-    
   }
   
   void addMoon( Planet p ) {
   }
-  
+
   void removePlanet( Planet p) {
   }
-  
+
   void removeMoon( Moon m) {
   }
-  
 }
