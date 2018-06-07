@@ -15,7 +15,7 @@ class Gas {
   //dist from center
   final static float STARTDIAM = 700;
   //step; affects how quickly condensation occurs
-  final static int STEP = 15;
+  final static int STEP = 45;
   //current diameter
   float currDiam = STARTDIAM;
   //boolean seeing if condensed
@@ -95,9 +95,9 @@ class Gas {
     updatePixels();
 
     zoff += zincrement; // Increment zoff
-    currDiam = Math.max(currDiam - STEP, s.getRad());
-    if (currDiam == s.getRad()){
+    currDiam = Math.max(currDiam-STEP, s.MAX_RADIUS);
+    if (currDiam == s.MAX_RADIUS && s.starDone){
       condensed = true;
     }
-  }
+  } 
 }

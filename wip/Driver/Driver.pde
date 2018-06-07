@@ -52,6 +52,8 @@ String choice1 = "Planet";
 String choice2 = "Moon";
 String choice3 = "Comet";
 String choice4 = "Asteroid";
+//solar system once 
+SolarSystem sys;
 
 /*******FOR REFERENCE
  float moonX, moonY; //Moon x and y coordinate
@@ -132,9 +134,9 @@ void draw() {
       textSize(30);
       msg = "Please choose a location to place your star:"; 
       text(msg, 10, 660);
-    }
+    }}
     //===================================================
-
+/*
     //============== Animation State ==================
   } else if (state==2) {   
     gas.noiseAnimateCondense(s, s.getX(), s.getY());
@@ -145,13 +147,30 @@ void draw() {
     }
   }
   //==================================================
+  */
 
   //====================== Solar System State ================== 
   //###NOTE###: Rectangle will be Planet and Moon will be Moon 
   //Use the choice variables on the top as markers for these buttons
   //Go to button.html in processing for your reference
   //^^^What the buttons actually do is done in mouseClicked()^^^
-  else if (state == 3) {
+  else if (state == 2) {
+    clear();
+    fill(s.c);
+    ellipse(0,0,50,50);
+    
+    //creates a new solar system and given the star
+    //star has radius, color and position on screen
+    //new SolarSystem(s);
+    for(Planet p: sys.arr) {
+       p.orbit(); 
+    }
+    
+
+    
+    
+    
+    // button
     update(mouseX, mouseY);
     
     if (rectOver) {
@@ -172,29 +191,7 @@ void draw() {
 
     msg = "Please Choose: ";
     text(msg, 20, 660);
-    /*************** FOR REFERENCE
-     //Larger speeds decrease revolution time
-     earthSpeed += .005;
-     moonSpeed += .05;
-     
-     //To establish simple harmonic motion, I used sin funcitons
-     earthX = 175*sin(earthSpeed+PI/2)+sunX;
-     earthY = 175*sin(earthSpeed)+sunY;
-     moonX = 40*sin(moonSpeed+PI/2)+earthX;
-     moonY = 40*sin(moonSpeed)+earthY;
-     
-     background(0);
-     
-     fill(0, 0, 255);
-     stroke(0, 0, 150);
-     ellipse(earthX, earthY, 30, 30);
-     fill(200);
-     stroke(150);
-     ellipse(moonX, moonY, 10, 10);
-     fill(255, 255, 0);
-     stroke(150, 150, 0);
-     ellipse(sunX, sunY, 200, 200);
-     ******************/
+    
   }
 }
   //============================================================
@@ -210,7 +207,7 @@ void update(int x, int y) {
     circleOver = rectOver = false;
   }
 }
-
+//returns if inside rect
 boolean overRect(int x, int y, int width, int height) {
   if (mouseX >= x && mouseX <= x+width && 
     mouseY >= y && mouseY <= y+height) {
@@ -220,6 +217,7 @@ boolean overRect(int x, int y, int width, int height) {
   }
 }
 
+//returns if inside circle
 boolean overCircle(int x, int y, int diameter) {
   float disX = x - mouseX;
   float disY = y - mouseY;
@@ -248,21 +246,23 @@ Scale from Solar Radii to Ellipse Size:
    */
   if (state==1 && msgTyped) {
     state = 2;
-    s = new Star(mouseX, mouseY, (5 + ( (int(input) - 1) * 0.174 )) ); 
+    s = new Star(mouseX, mouseY, (5 + ( (int(input) - 1) * 0.174 ))); 
     starPlaced = true;        
+    sys = new SolarSystem(s);
     //gas.noiseAnimateCondense(s, mouseX, mouseY);
     //s.expand();
   }
 
   //Include two if statements for clicking Moon button or clicking Planet button
-  /****** Use this for reference
+ if(state == 2) {
    if (circleOver) {
-   currentColor = circleColor;
+      sys.addPlanet();
    }
    if (rectOver) {
    currentColor = rectColor;
    }  
-   *********/
+ }
+
 }
 
 void keyTyped() {
@@ -278,10 +278,10 @@ void keyTyped() {
       //Add restriction to input size  
       if (input.length() > 0) { // message is done when enter pressed
         float f = Float.parseFloat(input);
-        if ( f > 1708) {  
+        if ( f > 880) {  
           msg = "Too big!";
           input = "";
-        } else if (f < 12) {
+        } else if (f < .12) {
           msg = "Too small!";
           input = "";
         } else {
@@ -292,5 +292,4 @@ void keyTyped() {
       if(key != BACKSPACE)
       input += key;
     }
-  }
-}
+  }}

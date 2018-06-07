@@ -2,13 +2,18 @@ import java.util.ArrayList;
 
 class Planet {
   final float MAX_RADIUS;
-  float rad;
-  float orbitSpeed;
-  int planetX, planetY;
+  float rad, starDist;
+  float planetSpeed = 100;
+  float spdInc;
+  float planetX, planetY;
   color c;
   ArrayList<Moon> arr;
+  int pAmp;
+  
 
-  Planet(int x, int y, float radius) {
+  Planet(float x, float y, float radius, int amp, float pSpeedInc) {
+    pAmp = amp;
+    spdInc = pSpeedInc;
     planetX = x;
     planetY = y;
     MAX_RADIUS = radius;
@@ -23,13 +28,24 @@ class Planet {
   }
 
   void orbit() {
+    
+    //Larger speeds decrease revolution time
+    planetSpeed += spdInc;
+
+    //To establish simple harmonic motion, I used sin funcitons
+    planetX = pAmp*sin(planetSpeed+PI/2);
+    planetY = pAmp*sin(planetSpeed);
+    
+    fill(color(250,5,210));
+    ellipse(planetX, planetY, rad, rad);
   }
+  
 
   //returning positions, initiated by user's mouseX and mouseY
-  int getX() {
+  float getX() {
     return planetX;
   }
-  int getY() {
+  float getY() {
     return planetY;
   }
 

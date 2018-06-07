@@ -1,8 +1,8 @@
 /*
 Scale from Solar Radii to Ellipse Size: 
  ==Input==   ==Ellipse==
- 12  -->  rad = 5 
- 1708   -->  rad = 300;
+ .12  -->  rad = 5 
+ 880   -->  rad = 500;
  Formula --> 5 + (input - 1)(0.174)
  Change Factor: 1 solar radii --> +0.174 rad 
  */
@@ -11,12 +11,13 @@ class Star {
   final float MAX_RADIUS;
   int starX, starY;
   float rad;
-  float changeFactor = 0.2314;
+  float changeFactor = 2.5;
   color c;
+  boolean starDone;
 
 
   //constructor
-  // 1 solar radii smallest star
+  // 12 solar radii smallest star
   // 1708 solar radii biggest star
   //algo: 
   // 800x800
@@ -25,8 +26,13 @@ class Star {
     starX = x;
     starY = y;
     MAX_RADIUS = radius;
-    rad = radius; //solar radii
-    c = color(2, 43, 249);
+    rad = 0; //solar radii
+    if ( MAX_RADIUS >= 500 ) {
+      c = color(174, 212, 227);
+    } else if ( MAX_RADIUS < 500) {
+      c = color(250,5,210);
+    }
+
     fill(c);
     //color gradient changes with bigger size
     //screen size 
@@ -34,8 +40,12 @@ class Star {
   }
 
   void expand() {
-    if (rad >= MAX_RADIUS) { 
-      rad -= changeFactor;
+    /* if (abs(rad-MAX_RADIUS) <= 0.2314) {
+     starDone = true;
+     fill(c);
+     ellipse(starX, starY, rad, rad);
+     } */    if (rad >= MAX_RADIUS) { 
+      starDone=true;
       fill(c);
       ellipse(starX, starY, rad, rad);
     } else {
@@ -53,16 +63,16 @@ class Star {
   void shine() {
   }
 
-//returning positions, initiated by user's mouseX and mouseY
+  //returning positions, initiated by user's mouseX and mouseY
   int getX() {
     return starX;
   }
   int getY() {
     return starY;
   }
-  
+
   //getting radius for gas function
-  float getRad(){
+  float getRad() {
     return rad;
   }
 }

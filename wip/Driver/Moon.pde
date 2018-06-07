@@ -1,7 +1,7 @@
 class Moon {
   final float MAX_RADIUS;
   float rad;
-  float orbitSpeed;
+  float moonSpeed;
   int moonX, moonY;
   color c;
 
@@ -19,9 +19,11 @@ class Moon {
   void revolve() {
   }
 
-  void orbit() {
+  /*void orbit() {
+    moonX = 40*sin(moonSpeed+PI/2)+earthX;
+    moonY = 40*sin(moonSpeed)+earthY;
   }
-
+*/
   //returning positions, initiated by user's mouseX and mouseY
   int getX() {
     return moonX;
