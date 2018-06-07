@@ -56,6 +56,13 @@ String choice4 = "Asteroid";
 SolarSystem sys;
 boolean paused;
 float temp;
+//are we in colonial minigame?
+boolean minigame;
+
+//stage 
+
+// stage 4 values
+Planet sel; //selected in stage 3
 
 /*******FOR REFERENCE
  float moonX, moonY; //Moon x and y coordinate
@@ -125,9 +132,8 @@ void draw() {
     }
   }
   //============================================================
-
   //================ Nebula State ==================
-  else if (state == 1) {
+  if (state == 1) {
     if (!gasIns) {
       gas = new Gas();
       gasIns = true;
@@ -171,6 +177,7 @@ void draw() {
   //Go to button.html in processing for your reference
   //^^^What the buttons actually do is done in mouseClicked()^^^
   else if (state == 2) {
+
     clear();
     fill(s.c);
     ellipse(width/2, height/2, 100, 100);
@@ -180,8 +187,8 @@ void draw() {
     //new SolarSystem(s);
     for (Planet p : sys.arr) {
       //float temp = p.spdInc;
-      for(Moon m: p.moonArr) {
-         m.orbit(); 
+      for (Moon m : p.moonArr) {
+        m.orbit();
       }
       p.orbit();
       if (dist(mouseX, mouseY, p.planetX, p.planetY) < p.getRad()) {
@@ -219,8 +226,43 @@ void draw() {
 
     msg = "Please Choose: ";
     text(msg, 20, 660);
+  } else if (state == 3) {
+
+    clear();
+    fill(s.c);
+    ellipse(width/2, height/2, 100, 100);
+    ellipse (0,0,100,100);
+
+    //creates a new solar system and given the star
+    //star has radius, color and position on screen
+    //new SolarSystem(s);
+    for (Planet p : sys.arr) {
+      //float temp = p.spdInc;
+      for (Moon m : p.moonArr) {
+        m.orbit();
+      }
+      p.orbit();
+      if (dist(mouseX, mouseY, p.planetX, p.planetY) < p.getRad()) {
+        //temp=p.spdInc;
+        p.spdInc = 0;
+        p.spdInc=temp;
+      } 
+      if (dist(mouseX, mouseY, p.planetX, p.planetY) > p.getRad()) {
+        temp=p.spdInc;
+        p.spdInc = temp;
+        p.orbit();
+        //stop();
+      }
+    }
+  } else if (state==4) {
+    background(90, 148, 185);
+    rect(0, 200, 700, 600);
+    fill(170, 118, 14);
+    //((Rocky)sel).drawColony();
   }
 }
+
+
 //============================================================
 
 void update(int x, int y) {
@@ -282,6 +324,7 @@ Scale from Solar Radii to Ellipse Size:
 
   //Include two if statements for clicking Moon button or clicking Planet button
   if (state == 2) {
+
     //circle is gassy planet
     if (sys.arr.size()<6) {
       if (circleOver) {
@@ -290,42 +333,83 @@ Scale from Solar Radii to Ellipse Size:
       //rect is rocky
       if (rectOver) {
         sys.addPlanet(0);
+        //designOpt =true;
       }
     }
     for (Planet p : sys.arr) {
       if (dist(mouseX, mouseY, p.planetX, p.planetY) < p.getRad()) {
         p.addMoon();
-      } 
+      }
+      //for each planet, if type is rocky and minigame = false
     }
   }
+  if (state == 3) {
+    for (Planet p : sys.arr) {
+      print("works");
+      if (dist(mouseX, mouseY, p.planetX, p.planetY) < p.getRad() &&  p.TYPE == 1) {
+        sel=p;
+        state = 4;
+        print("state");
+        
+      }
+
+      //for each planet, if type is rocky and minigame = false
+    }
+  }
+
+
+  //else if (minigame) {
+  // clear();
+  //}
 }
 
+
 void keyTyped() {
-  if (!msgTyped) {
-    if (key == BACKSPACE) {
-      if (input.length()>0)
-        input = input.substring(0, input.length()-1);
-    } 
-    if (key == ENTER) {
-      if (msg.equals("Too small!") || msg.equals("Too big!")) {
-        msg = "Please specify a size: ";
-      }
-      //Add restriction to input size  
-      if (input.length() > 0) { // message is done when enter pressed
-        float f = Float.parseFloat(input);
-        if ( f > 880) {  
-          msg = "Too big!";
-          input = "";
-        } else if (f < .12) {
-          msg = "Too small!";
-          input = "";
-        } else {
-          msgTyped = true;
+  if (state ==1) {
+    if (!msgTyped) {
+      if (key == BACKSPACE) {
+        if (input.length()>0)
+          input = input.substring(0, input.length()-1);
+      } 
+      if (key == ENTER && state==1) {
+        if (msg.equals("Too small!") || msg.equals("Too big!")) {
+          msg = "Please specify a size: ";
         }
+        //Add restriction to input size  
+        if (input.length() > 0) { // message is done when enter pressed
+          float f = Float.parseFloat(input);
+          if ( f > 880) {  
+            msg = "Too big!";
+            input = "";
+          } else if (f < .12) {
+            msg = "Too small!";
+            input = "";
+          } else {
+            msgTyped = true;
+          }
+        }
+      } else {
+        if (key != BACKSPACE)
+          input += key;
       }
-    } else {
-      if (key != BACKSPACE)
-        input += key;
+    }
+  } else if (state==2) {
+    if (key == ENTER) { //Set stage to three, gives ability to create colonies
+      state = 3;
+    }
+  } else if (state ==3) {// when click on rocky planet, go to stage 4
+    //if (key ==ENTER){
+     // state=4;
+    //}
+    
+    if (key == BACKSPACE) { //if stage = 3, go to stage 2
+      state=2;
+    }
+  }
+  //this is actual visuals of the mx heap colony thingy
+  else if (state==4) {
+    if (key == 'q') {
+      state=3;
     }
   }
 }

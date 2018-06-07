@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 
 class Planet {
+  final int TYPE = -1;
   final float MAX_RADIUS;
   float rad, starDist;
   float planetSpeed = 100;
@@ -8,6 +9,7 @@ class Planet {
   float planetX, planetY;
   color c;
   ArrayList<Moon> moonArr;
+  //will contain values for room position in maxHeap
   int pAmp;
   int mAmp = 40;
   float pSpeed;
@@ -30,8 +32,6 @@ class Planet {
     //ellipse coors specified by mouse location
   }
 
-  void revolve() {
-  }
 
   void orbit() {
 

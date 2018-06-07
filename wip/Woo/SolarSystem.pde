@@ -54,6 +54,7 @@ class SolarSystem {
       p = new Gassy(width/2-amp, height/2, 75., amp, pSpeedInc);
     } else {
       p = new Rocky(width/2-amp, height/2, 25., amp, pSpeedInc);
+      
     }
 
     arr.add(p);
