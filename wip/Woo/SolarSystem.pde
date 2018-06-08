@@ -64,6 +64,8 @@ class SolarSystem {
     for(Planet p : arr) {
       if (p.getType() == 1) {
         arr.remove(p);
+        amp -= 50;
+        pSpeedInc += .002;
         break;
       }
     }
@@ -73,6 +75,8 @@ class SolarSystem {
     for(Planet p : arr) {
       if (p.getType() == 0) {
         arr.remove(p);
+        amp -= 50;
+        pSpeedInc += .002;
         break;
       }
     }    

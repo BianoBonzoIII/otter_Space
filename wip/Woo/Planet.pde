@@ -57,6 +57,7 @@ class Planet {
   void removeMoon() {
     for (Moon m : moonArr) {
       moonArr.remove(m);
+      mAmp -= 5;
       break;
     }
 }
