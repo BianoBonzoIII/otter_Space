@@ -67,35 +67,60 @@ Summary :: intro going strong, transitions set up
 ==============================================================
 2018-06-04
 --------------------------------------------------------------
-Aleksandra :: tbd
-Brian :: tbd
-Isaac :: tbd
-Summary :: ??
+Aleksandra ::thought of way of implementing ALHeap as part of colonization
+phase. review of 2nd term concepts
+Brian/ Isaac:: work on setting up Planets and the two Planet subclasses
+Summary :: Some late creative juices flowing
 ==============================================================
-
+==============================================================
+2018-06-05
+--------------------------------------------------------------
+Aleksandra :: worked on animating condensation + Solar System work
+Brian/Isaac :: found example orbiting code and set up a test file
+Summary :: Condensation phase/figuring out noise phase completed,
+implementation of orbits outlined using sine function
+==============================================================
+==============================================================
+2018-06-06
+--------------------------------------------------------------
+Aleksandra :: setup plan and meetup for 6/7
+Brian :: worked on user input (buttons) and organizing code
+Isaac :: (assisted Brian)
+Summary :: Plan and files setup for an efficient day of coding tomorrow
+==============================================================
+==============================================================
+2018-06-07
+--------------------------------------------------------------
+Aleksandra/ Isaac: 10 hours of coding at Whole Foods by Stuy. Put in place orbits and habitats phase.
+Brian:: created end page and set up user instructions
+Summary :: final day of work brought to you by coffee
+==============================================================
 
 /////////// Zone of Reflection \\\\\\\\\\\
 ------------------------------------------
 ***OBSTACLES OVERCOME
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-tbd
+This team encountered some obstacles in terms of the scope of our project and the percieved end goal. ALthough there are many more features that we would like to have added, we are also proud of our current working version. We figured out how to scale user input in terms of solar radii and how to manipulate the pixels[] array with image creation. In addition, we used ALHeap code from the library to implement the habitats for each Rocky planet. 
 
 ***UNRESOLVED ISSUES
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-- we still need to work on user input and star constructing/ gas coming together animation
+- We still need to work on faciliating user input and showcasing more clearly second semester topics.
+- In a future version of the project, we would like to incorporate a zoom out function so that the orbits of the planets/moons do not intersect.
+- There is still some issue with error catching as inputting a String value will cause for an error.
 
 
 ***COOL STUFF LEARNED
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-- Perlin noise is a thing! Apparently it's a more "organic" way to randomize numbers.
+- We learned about Perlin noise and the different flavors of this algorithm available in Processing (2D, 3D). Noise creates for a more "natural look" as opposed to the random() function we have used previously.
+- We learned how to apply the trig functions to make for the smooth fading in and out of text, as well as for orbits. 
 
 ***MID-DEVELOPMENT DESIGN CHANGES
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-We changed ___ to ___ bc...
-<etc>
-<etc>
+We abandoned our idea of rotating each moving body since that would require shading and other more
+aesthetics-oriented coding. We also found out that shininess() is for spheres and other 3D bodies
+and we chose to stick to ellipses for our celestial bodies. We also included a colonial state, which was not previously mentioned in our proposal.
 
 ***LESSONS LEARNED
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-<tales of wisdom gained...>
+Instead of giving up on code that didn't showcase 2nd term concepts, we stuck to trying to implement features we thought were cool. We learned the importance of keeping track of time and of focusing on core features before delving into trivial, aesthetic things.
+We also learned how much user input can really bug you down and that there is much room for error in terms of Strings, floats, etc. (how input types that don't correspond to each other can crash a program) In the future, we must make sure to make more efficient use of our time in terms of coding.
