@@ -3,13 +3,14 @@ final static int INTRO = 0;
 final static int NEBULA = 1;
 final static int ANIMATION = 2;
 final static int SOLAR = 3;
-final static int END = 4;
+final static int COLONY = 4;
+final static int END = 5;
 
 //Text font
 PFont f;
 
 //state 0 vars
-int state =0;
+int state = 0;
 String a = "otter_Space presents...";
 String b = "The Space Architect Program!";
 String c = "{click on the screen to continue}";
@@ -18,8 +19,8 @@ float speed = 1.;
 float value = 0.0;
 int MAX = 255;
 String current= a;
-float fade =1.0; // alpha parameter is a number between 0.0 and 1.0
-int switches =0; // transitioning between strings a,b,c etc
+float fade = 1.0; // alpha parameter is a number between 0.0 and 1.0
+int switches = 0; // transitioning between strings a,b,c etc
 //
 
 //===== state 1 vars =====
@@ -43,15 +44,11 @@ int rectX, rectY;      // Position of square button
 int circleX, circleY;  // Position of circle button
 int rectSize = 50;     // Diameter of rect
 int circleSize = 60;   // Diameter of circle
-color rectColor, circleColor, baseColor;
+color rectColor, circleColor;
 color rectHighlight, circleHighlight;
-color currentColor;
 boolean rectOver = false;
 boolean circleOver = false;
-String choice1 = "Planet"; 
-String choice2 = "Moon";
-String choice3 = "Comet";
-String choice4 = "Asteroid";
+
 //solar system once 
 SolarSystem sys;
 boolean paused;
@@ -59,18 +56,15 @@ float temp;
 //are we in colonial minigame?
 boolean minigame;
 
-//stage 
-
 // stage 4 values
 Planet sel; //selected in stage 3
 
-/*******FOR REFERENCE
- float moonX, moonY; //Moon x and y coordinate
- float earthX, earthY; //Earth x and y coordinate
- float earthSpeed, moonSpeed; // The rate at which the bodies revolve
- float sunX = 350;
- float sunY = 350; // Suns x and y coordinate
- *********/
+// stage 5 values 
+String end = "Thank you for your Cooperation!";
+float speed1 = 1.; 
+float value1 = 0.0;
+float fade1 = 1.0; // alpha parameter is a number between 0.0 and 1.0
+int switches1 = 0; // transitioning between strings a,b,c etc
 
 void setup() {
   size(700, 700);
@@ -79,13 +73,13 @@ void setup() {
   smooth();
 
   // For stage 3
-  rectColor = color(255);
-  circleColor = color(255);
+  rectColor = color(198, 180, 180); //color(255)
+  circleColor = color(240, 183, 60); //color(255)
   rectHighlight = color(204);
   circleHighlight = color(204);
   rectX = 300;
   rectY = 625;
-  circleX = 500;
+  circleX = 450;
   circleY = 650;
 }
 
@@ -119,7 +113,7 @@ void draw() {
       fill(255, fade); 
       textSize(55);
       text(a, 50, 350);
-    } else if (switches ==1) { //String b
+    } else if (switches == 1) { //String b
       value+=speed;
       fill(255, fade); 
       textSize(45);
@@ -255,8 +249,11 @@ void draw() {
         //stop();
       }
     }
-  } else if (state==4) {
+  } 
+  //=========================================================
 
+  //================== Colony State =======================
+  else if (state == 4) { 
     background(90, 148, 185);
     fill(170, 118, 14);
     rect(0, 200, 700, 600);
@@ -270,10 +267,23 @@ void draw() {
     text(input, 2, 40);
     ((Rocky)sel).drawColony();
   }
+  //============================================================
+
+  //=================== End State ============================
+  else if (state == 5) {
+    background(50);
+    image(img, 0, 0);
+    fade1 = ((sin(radians(value1))+1)/2)*MAX; // makes the fading more "organic"
+    if (fade1 == 0.0) {
+      switches1++;
+    }
+      value1 += speed1;
+      fill(255, fade1); 
+      textSize(45);
+      text(end, 30, 350);    
+  }
 }
 
-
-//============================================================
 
 void update(int x, int y) {
   if ( overCircle(circleX, circleY, circleSize) ) {
@@ -351,7 +361,7 @@ Scale from Solar Radii to Ellipse Size:
         sel=p;
         state = 4;
         input ="";
-        msg = "Choose a number";
+        msg = "Enter a number";
       }
     }
   }
@@ -393,24 +403,24 @@ void keyTyped() {
           input += key;
       }
     }
-  } else if (state==2) {
+  } else if (state == 2) {
     if (key == ENTER) { //Set stage to three, gives ability to create colonies
       state = 3;
-    }
-  } else if (state ==3) {// when click on rocky planet, go to stage 4
-    //if (key ==ENTER){
-    // state=4;
-    //}
-
+    }   
+    if (key == 'z') {
+      state = 5;
+    }  
+    
+  } else if (state == 3) {// when click on rocky planet, go to stage 4
     if (key == BACKSPACE) { //if stage = 3, go to stage 2
-      state=2;
+      state = 2;
     }
   }
+  
   //this is actual visuals of the mx heap colony thingy
-  else if (state==4) {
-
+  else if (state == 4) {
     if (key == 'q') {
-      state=3;
+      state = 3;
     }
     if (key == BACKSPACE) {
       if (input.length()>0)
@@ -418,7 +428,9 @@ void keyTyped() {
     } 
     if (key == ENTER) {
       if (msg.equals("Too small!") || msg.equals("Too big!")) {
-        msg = "Choose a number";
+        msg = "Enter a number";
+        text(msg, 20, 660);
+        text(input, 400, 660);
       }
       //Add restriction to input size  
       if (input.length() > 0) { // message is done when enter pressed

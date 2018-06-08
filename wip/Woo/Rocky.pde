@@ -6,7 +6,7 @@ class Rocky extends Planet {
 
   Rocky( float x, float y, float radius, int amp, float pSpeedInc ) {
     super(x, y, radius, amp, pSpeedInc);
-    c= color(198, 180, 180);
+    c = color(198, 180, 180);
     colony= new ALHeap();
     firstRmx = width/2;
     firstRmy= 225;
