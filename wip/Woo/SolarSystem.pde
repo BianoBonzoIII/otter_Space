@@ -33,9 +33,6 @@ class SolarSystem {
    ******************/
 
   void move() {
-
-
-
     background(0);
 
     fill(0, 0, 255);
@@ -63,9 +60,28 @@ class SolarSystem {
   }
 
 
-  void removePlanet( Planet p) {
+  void removeGassy() {
+    for(Planet p : arr) {
+      if (p.getType() == 1) {
+        arr.remove(p);
+        break;
+      }
+    }
+  }
+  
+  void removeRocky() {
+    for(Planet p : arr) {
+      if (p.getType() == 0) {
+        arr.remove(p);
+        break;
+      }
+    }    
   }
 
-  void removeMoon(Moon m) {
+  void removeMoon() {
+    for(Planet p : arr) {
+      p.removeMoon();
+      break;
+    }
   }
 }

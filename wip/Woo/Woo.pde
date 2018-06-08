@@ -39,11 +39,11 @@ boolean starPlaced;// false until state 2
 //===== state 3 vars =====
 // Celestial Body Variables
 Star s;
-//User Input Variables
+// User Input Variables
 int rectX, rectY;      // Position of square button
 int circleX, circleY;  // Position of circle button
-int rectSize = 50;     // Diameter of rect
-int circleSize = 60;   // Diameter of circle
+int rectSize = 45;     // Diameter of rect
+int circleSize = 55;   // Diameter of circle
 color rectColor, circleColor;
 color rectHighlight, circleHighlight;
 boolean rectOver = false;
@@ -55,6 +55,14 @@ boolean paused;
 float temp;
 //are we in colonial minigame?
 boolean minigame;
+
+//User Guide variables 
+String exit = "z --> Exit Program";
+String rmGassy = "g --> Remove Gassy Planet";
+String rmRocky = "r --> Remove Rocky Planet";
+String rmMoon = "m --> Remove Moon";
+String colony = "ENTER --> Colony Stage";
+String goBack = "q --> Go back to Solar System";
 
 // stage 4 values
 Planet sel; //selected in stage 3
@@ -77,9 +85,9 @@ void setup() {
   circleColor = color(240, 183, 60); //color(255)
   rectHighlight = color(204);
   circleHighlight = color(204);
-  rectX = 300;
-  rectY = 625;
-  circleX = 450;
+  rectX = 275;
+  rectY = 630;
+  circleX = 375;
   circleY = 650;
 }
 
@@ -146,7 +154,7 @@ void draw() {
       text(msg, 20, 660);
       text(input, 400, 660);
     } else {
-      textSize(30);
+      textSize(20);
       msg = "Please choose a location to place your star:"; 
       text(msg, 10, 660);
     }
@@ -219,8 +227,19 @@ void draw() {
     stroke(0);
     ellipse(circleX, circleY, circleSize, circleSize);
 
+    textSize(35);
     msg = "Please Choose: ";
-    text(msg, 20, 660);
+    text(msg, 15, 660);
+    
+    textSize(17);
+    fill(255, 0, 0);
+    text(exit, 425, 610);
+    text(rmGassy, 425, 626);  
+    text(rmRocky, 425, 642);
+    text(rmMoon, 425, 658);
+    text(colony, 425, 674);
+    text(goBack, 425, 690);
+    
   } else if (state == 3) {
 
     clear();
@@ -277,10 +296,10 @@ void draw() {
     if (fade1 == 0.0) {
       switches1++;
     }
-      value1 += speed1;
-      fill(255, fade1); 
-      textSize(45);
-      text(end, 30, 350);    
+    value1 += speed1;
+    fill(255, fade1); 
+    textSize(45);
+    text(end, 30, 350);
   }
 }
 
@@ -410,13 +429,21 @@ void keyTyped() {
     if (key == 'z') {
       state = 5;
     }  
-    
+    if (key == 'r') {
+      sys.removeRocky();
+    }
+    if (key == 'g') {
+      sys.removeGassy();
+    }
+    if (key == 'm') {
+      sys.removeMoon();
+    }
   } else if (state == 3) {// when click on rocky planet, go to stage 4
     if (key == BACKSPACE) { //if stage = 3, go to stage 2
       state = 2;
     }
   }
-  
+
   //this is actual visuals of the mx heap colony thingy
   else if (state == 4) {
     if (key == 'q') {

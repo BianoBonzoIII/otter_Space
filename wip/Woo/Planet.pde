@@ -33,7 +33,7 @@ class Planet {
   }
   
   int getType() {
-  return type; 
+    return type; 
   }
 
   void orbit() {
@@ -54,7 +54,12 @@ class Planet {
     mAmp += 5;
   }
 
-
+  void removeMoon() {
+    for (Moon m : moonArr) {
+      moonArr.remove(m);
+      break;
+    }
+}
 
   //returning positions, initiated by user's mouseX and mouseY
   float getX() {
