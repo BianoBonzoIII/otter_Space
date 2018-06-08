@@ -81,13 +81,6 @@ void expand() {
   }
 }
 
-// gives the illusion of rotating star at fixed point
-// may use rotate()
-void revolve() {
-}
-// use shininess(float)
-void shine() {
-}
 
 //returning positions, initiated by user's mouseX and mouseY
 int getX() {

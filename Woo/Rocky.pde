@@ -12,6 +12,7 @@ class Rocky extends Planet {
     firstRmy= 225;
   }
 
+// part of the colonization phase
   void drawColony() {
     //smaller rooms towards the top
     //limited number of rooms

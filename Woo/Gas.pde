@@ -55,7 +55,7 @@ class Gas {
     zoff += zincrement; // Increment zoff
   }
 
-
+// very similar to above method but is called when radius is input
   void noiseAnimateCondense(Star s, int currX, int currY) {
     // Optional: adjust noise detail here
     //ie changes "bluriness"
@@ -64,30 +64,19 @@ class Gas {
     loadPixels();
 
     float xoff = 0.0; // Start xoff at 0
-
-    // For every x,y coordinate in a 2D space, calculate a noise value and produce a brightness value
     for (int x= 0; x < width; x++) {
-
-
-
       xoff += increment;   // Increment xoff 
-      
+
       float yoff = 0.0;   // For every xoff, start yoff at 0
       for (int y = 0; y < height; y++) {
         float d = dist(currX, currY, x, y); //distance b/w center of star and x, y of pixel
 
         if ( d > currDiam) {
-          pixels[x+y*width] = img.pixels[x+y*width];
+          pixels[x+y*width] = img.pixels[x+y*width]; // creates the distorted image effect
         } else {
-          yoff += increment; // Increment yoff
+          yoff += increment;
 
-          // Calculate noise and scale by 255
           float bright = noise(xoff, yoff, zoff)*255;
-
-          // Try using this line instead
-          //float bright = random(0,255);
-
-          // Set each pixel onscreen to a grayscale value
           pixels[x+y*width] = color(bright, bright, bright);
         }
       }
@@ -96,8 +85,8 @@ class Gas {
 
     zoff += zincrement; // Increment zoff
     currDiam = Math.max(currDiam-STEP, 100);
-    if (currDiam == 100 && s.starDone){
+    if (currDiam == 100 && s.starDone) {
       condensed = true;
     }
-  } 
+  }
 }

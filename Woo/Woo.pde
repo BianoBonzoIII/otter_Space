@@ -91,18 +91,6 @@ void setup() {
   circleY = 650;
 }
 
-/*void stop() {
- float temp;
- for (Planet p : sys.arr) {
- temp = p.spdInc;
- if (paused) {
- p.spdInc = 0;
- } else {
- p.spdInc = temp;
- p.orbit();
- }
- }
- }*/
 
 void draw() {
   //==================== Intro State =======================
@@ -189,13 +177,13 @@ void draw() {
     //star has radius, color and position on screen
     //new SolarSystem(s);
     for (Planet p : sys.arr) {
-      //float temp = p.spdInc;
+
       for (Moon m : p.moonArr) {
         m.orbit();
       }
       p.orbit();
       if (dist(mouseX, mouseY, p.planetX, p.planetY) < p.getRad()) {
-        //temp=p.spdInc;
+
         p.spdInc = 0;
         p.spdInc=temp;
       } 
@@ -203,7 +191,6 @@ void draw() {
         temp=p.spdInc;
         p.spdInc = temp;
         p.orbit();
-        //stop();
       }
     }
 
@@ -230,7 +217,7 @@ void draw() {
     textSize(35);
     msg = "Please Choose: ";
     text(msg, 15, 660);
-    
+
     textSize(17);
     fill(255, 0, 0);
     text(exit, 425, 610);
@@ -239,7 +226,6 @@ void draw() {
     text(rmMoon, 425, 658);
     text(colony, 425, 674);
     text(goBack, 425, 690);
-    
   } else if (state == 3) {
 
     clear();

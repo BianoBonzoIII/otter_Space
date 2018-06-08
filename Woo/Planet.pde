@@ -26,10 +26,6 @@ class Planet {
     //not currently used
     MAX_RADIUS = radius;
     rad = radius; //solar radii
-    //c = color(5, 70, 145);
-    //color gradient changes with bigger size
-    //screen size 
-    //ellipse coors specified by mouse location
   }
   
   int getType() {

@@ -19,17 +19,6 @@ class SolarSystem {
    moonX = 40*sin(moonSpeed+PI/2)+earthX;
    moonY = 40*sin(moonSpeed)+earthY;
    
-   background(0);
-   
-   fill(0, 0, 255);
-   stroke(0, 0, 150);
-   ellipse(earthX, earthY, 30, 30);
-   fill(200);
-   stroke(150);
-   ellipse(moonX, moonY, 10, 10);
-   fill(255, 255, 0);
-   stroke(150, 150, 0);
-   ellipse(sunX, sunY, 200, 200);
    ******************/
 
   void move() {
@@ -51,7 +40,6 @@ class SolarSystem {
       p = new Gassy(width/2-amp, height/2, 75., amp, pSpeedInc);
     } else {
       p = new Rocky(width/2-amp, height/2, 25., amp, pSpeedInc);
-      
     }
 
     arr.add(p);
@@ -61,7 +49,7 @@ class SolarSystem {
 
 
   void removeGassy() {
-    for(Planet p : arr) {
+    for (Planet p : arr) {
       if (p.getType() == 1) {
         arr.remove(p);
         amp -= 50;
@@ -70,20 +58,20 @@ class SolarSystem {
       }
     }
   }
-  
+
   void removeRocky() {
-    for(Planet p : arr) {
+    for (Planet p : arr) {
       if (p.getType() == 0) {
         arr.remove(p);
         amp -= 50;
         pSpeedInc += .002;
         break;
       }
-    }    
+    }
   }
 
   void removeMoon() {
-    for(Planet p : arr) {
+    for (Planet p : arr) {
       p.removeMoon();
       break;
     }
